@@ -1,50 +1,25 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-
 const deps = require("./package.json").dependencies;
-module.exports = {
+const { merge } = require("webpack-merge");
+const commonConfig = require("./webpack.common");
+
+const port = 3000;
+const proceduresUrl = "http://localhost:3001";
+const developmentConfig = {
   output: {
-    publicPath: "/",
+    publicPath: `http://localhost:${port}/`,
   },
-
-  resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-  },
-
   devServer: {
-    port: 3000,
+    port: port,
     historyApiFallback: true,
   },
-
-  module: {
-    rules: [
-      {
-        test: /\.m?js/,
-        type: "javascript/auto",
-        resolve: {
-          fullySpecified: false,
-        },
-      },
-      {
-        test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
-    ],
-  },
-
   plugins: [
     new ModuleFederationPlugin({
       name: "mf_container",
       filename: "remoteEntry.js",
       remotes: {
-        mf_procedure: "mf_procedure@http://localhost:3001/remoteEntry.js",
+        mf_procedure: `mf_procedure@${proceduresUrl}/remoteEntry.js`,
       },
       exposes: {},
       shared: {
@@ -64,3 +39,4 @@ module.exports = {
     }),
   ],
 };
+module.exports = merge(commonConfig, developmentConfig);
