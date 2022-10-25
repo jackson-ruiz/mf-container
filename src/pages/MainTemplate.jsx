@@ -2,9 +2,12 @@ import React from "react";
 import PersonIcon from "@material-ui/icons/Person";
 import LeftSidebar from "./../components/LeftSidebar";
 import Dashboard from "./../pages/Dashboard";
-import ProceduresPage from "mf_procedure/ProceduresPage";
 import { Routes, Route } from "react-router-dom";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import ErrorManagement from "../components/ErrorManagement";
+
+const ProceduresPage = React.lazy(() => import("mf_procedure/ProceduresPage"));
+
 const routeList = [
   {
     path: "/",
@@ -12,7 +15,11 @@ const routeList = [
   },
   {
     path: "/tramites",
-    element: <ProceduresPage />,
+    element: (
+      <ErrorManagement>
+        <ProceduresPage />
+      </ErrorManagement>
+    ),
   },
 ];
 
