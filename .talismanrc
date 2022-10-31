@@ -1,4 +1,6 @@
 fileignoreconfig:
-  - filename: package-lock.json
-    checksum: 6583d646f4af1076693f5881a43dc9083f957e630ae0fa74005e38874a2b6145
+  - filename: src/components/form/Button.test.jsx
+    checksum: 4d2fe35c32422b9877899067e4022ed348d9be53d74dc5fd25f86d9b3f67f630
+  - filename: src/components/templateGrid/ContentManager.jsx
+    checksum: afa1777b70899ab72ad70168afe6538dd3252799df3d4396077a425617dc0023
 version: ""
