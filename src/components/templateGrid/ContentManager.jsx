@@ -2,7 +2,21 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ErrorManagement from "./../errorManagement/ErrorManagement";
 import Dashboard from "./../../pages/Dashboard";
-const ProceduresPage = React.lazy(() => import("mf_procedure/ProceduresPage"));
+const TabScreen = React.lazy(() => import("mf_procedure/TabScreen"));
+
+const tabData = [
+  {
+    tabLabel: "Tab 1",
+    tabLabelIcon: "",
+    tabContent: "Contenido tab 1",
+  },
+  {
+    tabLabel: "Tab 2",
+    tabLabelIcon: "",
+    tabContent: "Contenido tab 2",
+  },
+];
+
 const routeList = [
   {
     key: 1,
@@ -14,7 +28,7 @@ const routeList = [
     path: "/tramites",
     element: (
       <ErrorManagement>
-        <ProceduresPage />
+        <TabScreen data={tabData} />
       </ErrorManagement>
     ),
   },
