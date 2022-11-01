@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import ErrorManagement from "./../errorManagement/ErrorManagement";
 import Dashboard from "./../../pages/Dashboard";
 const TabScreen = React.lazy(() => import("mf_procedure/TabScreen"));
-const SamplePage = React.lazy(() => import("mf_procedure/SamplePage"));
 
 const tabData = [
   {
@@ -30,15 +29,6 @@ const routeList = [
     element: (
       <ErrorManagement>
         <TabScreen data={tabData} />
-      </ErrorManagement>
-    ),
-  },
-  {
-    key: 3,
-    path: "/tramiteSample",
-    element: (
-      <ErrorManagement>
-        <SamplePage />
       </ErrorManagement>
     ),
   },
