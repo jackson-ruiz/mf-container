@@ -14,6 +14,11 @@ const menuList = [
     icon: <PostAddIcon />,
     route: "/tramites",
   },
+  {
+    title: "Trámites Ejemplo",
+    icon: <PostAddIcon />,
+    route: "/tramiteSample",
+  },
 ];
 
 const MainMenu = () => {
